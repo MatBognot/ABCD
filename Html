@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project ABCD</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #4CAF50;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+        }
+        section {
+            margin: 20px;
+        }
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Project ABCD</h1>
+        <p>Empowering Students Through Smart Learning</p>
+    </header>
+
+    <nav>
+        <a href="#summarization">Summarization Tool</a>
+        <a href="#quiz">Game & Quiz Modules</a>
+        <a href="#reflection">Reflective Learning</a>
+    </nav>
+
+    <section id="summarization">
+        <h2>Summarization Tool</h2>
+        <p>Paste the text you want to summarize below:</p>
+        <textarea id="inputText" rows="10" cols="50" placeholder="Paste text here"></textarea><br>
+        <button onclick="summarizeText()">Summarize</button>
+        <p><strong>Summary:</strong></p>
+        <div id="summaryOutput"></div>
+    </section>
+
+    <section id="quiz">
+        <h2>Game & Quiz Modules</h2>
+        <p>Test your knowledge! Choose a game or quiz option below:</p>
+        <button onclick="startQuiz()">Start Quiz</button>
+        <div id="quizSection" style="display: none;">
+            <p>Quiz Question: What is 2 + 2?</p>
+            <button onclick="checkAnswer(4)">4</button>
+            <button onclick="checkAnswer(3)">3</button>
+            <button onclick="checkAnswer(5)">5</button>
+            <p id="quizResult"></p>
+        </div>
+    </section>
+
+    <section id="reflection">
+        <h2>Reflective Learning Evaluation</h2>
+        <p>Write down your thoughts and insights below:</p>
+        <textarea id="reflectionText" rows="10" cols="50" placeholder="Enter your reflections here"></textarea><br>
+        <button onclick="saveReflection()">Save Reflection</button>
+        <p><strong>Saved Reflections:</strong></p>
+        <div id="savedReflections"></div>
+    </section>
+
+    <footer>
+        <p>Project ABCD &copy; 2024</p>
+    </footer>
+
+    <script>
+        // Summarization Tool JavaScript Function
+        function summarizeText() {
+            let inputText = document.getElementById('inputText').value;
+            // Simple summarization logic (for demo purposes)
+            let summary = inputText.split(" ").slice(0, 20).join(" ") + "...";
+            document.getElementById('summaryOutput').innerText = summary;
+        }
+
+        // Quiz JavaScript Functions
+        function startQuiz() {
+            document.getElementById('quizSection').style.display = 'block';
+        }
+
+        function checkAnswer(answer) {
+            if (answer === 4) {
+                document.getElementById('quizResult').innerText = "Correct!";
+            } else {
+                document.getElementById('quizResult').innerText = "Try again!";
+            }
+        }
+
+        // Reflection Saving Function
+        function saveReflection() {
+            let reflection = document.getElementById('reflectionText').value;
+            let savedReflections = document.getElementById('savedReflections');
+            let newReflection = document.createElement('p');
+            newReflection.innerText = reflection;
+            savedReflections.appendChild(newReflection);
+        }
+    </script>
+
+</body>
+</html>
